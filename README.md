@@ -11,6 +11,10 @@ A preview-first OBS Studio Python script that sends a bounded cue signal to your
 
 Never put a TypeSafe API key in an OBS script or scene collection. The trusted gateway owns upstream credentials and registered pack `obs/scene-cue`; OBS receives a short-lived session token. Network work runs on a worker thread, late revisions are ignored, and switching remains on OBS's main timer callback.
 
+## Try the cue contract offline
+
+Run `python3 examples/offline_cue.py` to build a bounded cue request, accept one synthetic gateway outcome and reject a stale revision. This exercises the engine-independent safety contract without OBS, a gateway or a TypeSafe key. It does not verify in-host scene switching.
+
 ## Test
 
 ```bash
