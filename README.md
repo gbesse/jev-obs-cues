@@ -13,6 +13,8 @@ Never put a TypeSafe API key in an OBS script or scene collection. The trusted g
 
 ## Try the cue contract offline
 
+`python3 examples/offline_cue.py` now also rejects a synthetic scene that is absent from the request's allowed scene list. The script tests the contract without OBS or a network call. / Le script rejette aussi une scène absente de la liste autorisée, sans OBS ni réseau. / El script también rechaza una escena fuera de la lista permitida, sin OBS ni red.
+
 Run `python3 examples/offline_cue.py` to build a bounded cue request, accept one synthetic gateway outcome and reject a stale revision. This exercises the engine-independent safety contract without OBS, a gateway or a TypeSafe key. It does not verify in-host scene switching.
 
 ## Test
@@ -26,4 +28,3 @@ python3 -m compileall -q src
 Tests are offline. OBS was not installed in the build environment, so loading the script and applying a real scene switch remain host-specific checks.
 
 MIT — see [LICENSE](LICENSE).
-

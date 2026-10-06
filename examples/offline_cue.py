@@ -25,12 +25,20 @@ except ValueError:
 else:
     stale_rejected = False
 assert stale_rejected
+try:
+    validate_response(request, {**response, "record": {**response["record"], "outcome": "Invented scene"}})
+except ValueError:
+    unknown_scene_rejected = True
+else:
+    unknown_scene_rejected = False
+assert unknown_scene_rejected
 print(
     json.dumps(
         {
             "source": "synthetic fixture; no OBS or network",
             "accepted_outcome": outcome,
             "stale_revision_rejected": stale_rejected,
+            "unknown_scene_rejected": unknown_scene_rejected,
         },
         sort_keys=True,
     )
